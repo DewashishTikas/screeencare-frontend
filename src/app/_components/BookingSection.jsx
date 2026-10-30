@@ -3,15 +3,22 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
 import { useRouter } from 'next/navigation'
+import { useAuth } from '../_context/AuthContext'
 
 export default function BookingSection() {
   const [modelQuery, setModelQuery] = useState('')
   const router = useRouter()
+  const { user } = useAuth()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const query = modelQuery.trim()
-    router.push(query ? `/book?step=1&model=${encodeURIComponent(query)}` : '/book?step=1')
+    const bookUrl = query ? `/book?step=1&model=${encodeURIComponent(query)}` : '/book?step=1'
+    if (!user) {
+      router.push(`/login?redirect=${encodeURIComponent(bookUrl)}`)
+    } else {
+      router.push(bookUrl)
+    }
   }
 
   return (

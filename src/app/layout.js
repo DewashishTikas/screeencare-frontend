@@ -1,33 +1,43 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins, Open_Sans } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
-import Navbar from "./_components/Navbar";
+import ConditionalNavbar from "./_components/ConditionalNavbar";
+import { AuthProvider } from "./_context/AuthContext";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+});
 
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-open-sans",
+  display: "swap",
+});
 
 export const metadata = {
   title: "ScreenCare - Doorstep Screen Protector Installation",
-  description: "Choose a compatible protector, pick a convenient time, and get professional installation at your doorstep.",
+  description: "Choose a compatible protector, pick a convenient time, and get professional installation at your doorstep within 1 hour.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`h-full antialiased`}
+      className={`h-full antialiased ${poppins.variable} ${openSans.variable}`}
     >
-      <body className="min-h-full flex flex-col">
-        <header className="sticky top-0 z-50 w-full">
-          <Navbar />
-        </header>
-        {children}
+      <head>
+        <link rel="icon" href="logo.ico" />
+      </head>
+      <body className="min-h-full flex flex-col font-sans">
+        <AuthProvider>
+          <Suspense fallback={null}>
+            <ConditionalNavbar />
+          </Suspense>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

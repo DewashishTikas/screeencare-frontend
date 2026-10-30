@@ -15,8 +15,8 @@ const steps = [
   },
   {
     number: '3',
-    title: 'Get it installed',
-    desc: 'A technician visits your supported location and fits your protector.',
+    title: 'Doorstep fitting in 1 hour',
+    desc: 'A certified installer arrives at your doorstep within 60 minutes and fits your protector with sterile precision.',
   },
 ]
 

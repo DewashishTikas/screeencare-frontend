@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 // Server Component - rendered on server with zero client JS
@@ -12,16 +13,7 @@ export default function AuthHeader({ mode = 'signup' }) {
           href="/"
           className="flex items-center gap-2.5 bg-transparent border-none cursor-pointer p-0 text-left no-underline group"
         >
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <rect width="28" height="28" rx="7" fill="#2563EB" />
-            <path
-              d="M8 14.5L11.5 18L20 9.5"
-              stroke="white"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <Image src="/logo.jpg" alt='ScreenCare' width={60} height = {60}/>
           <span className="text-lg font-bold text-gray-900 tracking-tight group-hover:text-blue-600 transition-colors">
             ScreenCare
           </span>

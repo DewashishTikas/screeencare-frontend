@@ -4,10 +4,21 @@ import { motion } from 'motion/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import customerImg from '/public/hero-page.png'
+import customerImg from '/public/hero-page.webp'
+import { useAuth } from '../_context/AuthContext'
 
 export default function HeroSection() {
   const router = useRouter()
+  const { user } = useAuth()
+
+  const handleBookClick = (e) => {
+    e.preventDefault()
+    if (!user) {
+      router.push('/login?redirect=/book?step=1')
+    } else {
+      router.push('/book?step=1')
+    }
+  }
 
   return (
     <section className="bg-gray-50 py-16 px-6 md:py-20 sm:py-10 sm:px-4">
@@ -22,17 +33,14 @@ export default function HeroSection() {
         >
           {/* Badge */}
           <motion.div
-            className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-3xl px-4 py-1.5 pl-2.5 text-[13px] font-medium text-gray-700 w-fit mb-6"
+            className="inline-flex items-center gap-2.5 bg-blue-50 border border-blue-200/80 rounded-3xl px-4 py-1.5 pl-3 text-[13px] font-semibold text-[#4361EE] w-fit mb-6 shadow-xs"
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <circle cx="8" cy="8" r="8" fill="#4361EE" opacity="0.15" />
-              <path d="M5 8L7 10L11 6" stroke="#4361EE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span>Careful installation at your doorstep</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>⚡ Doorstep Installation in Under 1 Hour</span>
           </motion.div>
 
           {/* Heading */}
@@ -44,7 +52,7 @@ export default function HeroSection() {
           {/* Description */}
           <p className="text-base leading-relaxed text-gray-500 mb-7 max-w-[420px]">
             Choose a compatible protector, pick a convenient time, and
-            get professional installation at a supported location.
+            get certified professional installation at your doorstep within 60 minutes.
           </p>
 
           {/* Buttons & Links */}
@@ -55,15 +63,16 @@ export default function HeroSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <Link
-              href="/book?step=1"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#4361EE] text-white rounded-3xl text-sm font-medium no-underline shadow-[0_1px_3px_rgba(67,97,238,0.3)] hover:bg-[#3451de] hover:-translate-y-0.5 hover:shadow-[0_4px_14px_rgba(67,97,238,0.35)] transition-all"
+            <button
+              type="button"
+              onClick={handleBookClick}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#4361EE] text-white rounded-3xl text-sm font-medium no-underline shadow-[0_1px_3px_rgba(67,97,238,0.3)] hover:bg-[#3451de] hover:-translate-y-0.5 hover:shadow-[0_4px_14px_rgba(67,97,238,0.35)] transition-all cursor-pointer border-none"
             >
               <span>Book installation</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </button>
             <Link
               href="#how-it-works"
               className="inline-flex items-center px-6 py-3 bg-white text-gray-700 border border-gray-300 rounded-3xl text-sm font-medium no-underline hover:border-gray-400 hover:bg-gray-50 transition-all"

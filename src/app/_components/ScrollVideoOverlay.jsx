@@ -39,11 +39,11 @@ export default function ScrollVideoOverlay({ children }) {
       {/* Stays pinned at top-16 under navbar only while hero content overlays it */}
       <motion.div
         style={{ opacity, pointerEvents }}
-        className="sticky top-16 z-0 w-full flex items-center justify-center px-2 sm:px-4 py-2 sm:py-4"
+        className="sticky top-0 z-0 w-full flex items-center justify-center px-2 sm:px-4 "
       >
         <motion.div
           style={{ scale, y: videoY }}
-          className="w-full max-w-[1200px] aspect-[16/8.5] max-sm:aspect-video md:rounded-2xl overflow-hidden shadow-[0_16px_45px_rgba(0,0,0,0.14)] relative group bg-black"
+          className="w-full max-w-[1500px] aspect-[18/8.5] max-sm:aspect-video md:rounded-2xl overflow-hidden shadow-[0_16px_45px_rgba(0,0,0,0.14)] relative group bg-black"
         >
           <video
             ref={videoRef}
@@ -83,12 +83,6 @@ export default function ScrollVideoOverlay({ children }) {
             )}
           </button>
 
-          {/* Top Left Tag */}
-          <div className="absolute top-4 left-4 sm:top-5 sm:left-5 pointer-events-none bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-semibold text-white/90 flex items-center gap-2 border border-white/10">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>ScreenCare In Action</span>
-          </div>
-
           {/* Bottom Center Scroll Prompt */}
           <motion.div
             style={{ opacity: promptOpacity }}
@@ -114,7 +108,7 @@ export default function ScrollVideoOverlay({ children }) {
 
       {/* ── 2. Content Overlay Sheet ── */}
       {/* Fully opaque background, covers video completely and continues through the rest of the page */}
-      <div className="relative z-10 mt-0 bg-gray-50 min-h-screen rounded-t-[32px] sm:rounded-t-[44px] shadow-[0_-20px_50px_rgba(0,0,0,0.12)] border-t border-gray-200/90">
+      <div className="relative z-10 mt-16 bg-gray-50 min-h-screen rounded-t-[32px] sm:rounded-t-[44px] shadow-[0_-20px_50px_rgba(0,0,0,0.12)] border-t border-gray-200/90">
         {/* Subtle tactile handle bar */}
         <div className="pt-3.5 pb-1 flex justify-center">
           <div className="w-12 h-1.5 bg-gray-300 rounded-full" />

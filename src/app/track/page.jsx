@@ -1,7 +1,7 @@
 import TrackInstallation from '../_components/TrackInstallation'
 
 export const metadata = {
-  title: 'Track Installation | ScreenCare',
+  title: 'Track Order | ScreenCare',
   description: 'Real-time updates for your Screen Protector installation.',
 }
 

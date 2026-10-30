@@ -19,7 +19,7 @@ export default function VideoSection() {
   }
 
   return (
-    <section className="bg-gray-50 pt-12 px-6 md:px-6 sm:pt-8 sm:px-4">
+    <section className="bg-gray-50 px-6 md:px-6 sm:pt-8 sm:px-4">
       <div className="max-w-[1200px] mx-auto">
         <motion.div
           className="w-full rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] relative group bg-black"
@@ -27,7 +27,7 @@ export default function VideoSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <div className="relative w-full aspect-18/7 max-sm:aspect-video overflow-hidden rounded-2xl bg-black">
+          <div className="relative w-full aspect-18/6 max-sm:aspect-video overflow-hidden rounded-2xl bg-black">
             <video
               ref={videoRef}
               src="/assets/hero-video.webm"
