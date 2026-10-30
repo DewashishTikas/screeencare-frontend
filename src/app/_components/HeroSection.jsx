@@ -4,7 +4,7 @@ import { motion } from 'motion/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import customerImg from '@/assets/hero-page.png'
+import customerImg from '/public/hero-page.png'
 
 export default function HeroSection() {
   const router = useRouter()

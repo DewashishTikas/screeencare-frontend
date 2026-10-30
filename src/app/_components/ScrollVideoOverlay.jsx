@@ -34,12 +34,12 @@ export default function ScrollVideoOverlay({ children }) {
   }
 
   return (
-    <div className="relative bg-gray-50">
+    <div className="relative bg-gray-50 overflow-x-hidden">
       {/* ── 1. Sticky Video Section ── */}
       {/* Stays pinned at top-16 under navbar only while hero content overlays it */}
       <motion.div
         style={{ opacity, pointerEvents }}
-        className="sticky top-16 z-0 w-full flex items-center justify-center px-4 sm:px-6 py-6 sm:py-8"
+        className="sticky top-16 z-0 w-full flex items-center justify-center px-2 sm:px-4 py-2 sm:py-4"
       >
         <motion.div
           style={{ scale, y: videoY }}

@@ -27,17 +27,20 @@ export default function VideoSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <div className="relative w-full aspect-[16/7] max-sm:aspect-video overflow-hidden rounded-2xl bg-black">
+          <div className="relative w-full aspect-18/7 max-sm:aspect-video overflow-hidden rounded-2xl bg-black">
             <video
               ref={videoRef}
-              src="/hero-video.webm"
+              src="/assets/hero-video.webm"
               autoPlay
               loop
               muted
               playsInline
               className="w-full h-full object-cover rounded-2xl cursor-pointer"
               onClick={togglePlay}
-            />
+            >
+              <source src="/assets/hero-video.webm" type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
 
             {/* Play / Pause Overlay Button */}
             <button

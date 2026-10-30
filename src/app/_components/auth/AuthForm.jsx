@@ -15,17 +15,54 @@ export default function AuthForm({ mode = 'signup' }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [agreedToTerms, setAgreedToTerms] = useState(false)
-  const [rememberMe, setRememberMe] = useState(true)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (isSignup) {
-      alert(`Account created successfully for ${fullName || email}! Redirecting to bookings...`)
-      router.push('/book?step=1')
+      console.log(`${process.env.NEXT_PUBLIC_BACKENDURL}/auth/register`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKENDURL}/auth/register`, {
+        method: 'POST',
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          name: fullName, email, password
+        })
+      })
+      if (res.status == 201) {
+        setTimeout(() => {
+          router.push('/login')
+        }, 1000);
+      }
+      else if(res.status == 409){
+        // toast message user already exist
+      }
+      else {
+        console.log('Something went wrong');
+      }
     } else {
-      alert(`Welcome back ${email}! Redirecting to bookings...`)
-      router.push('/book?step=1')
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKENDURL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+           email, password
+        })
+      })
+      const data = res.json()
+      console.log(data);
+      if (res.status == 201) {
+        setTimeout(() => {
+          router.push('/')
+        }, 1000);
+      }
+      else if (res.status == 401){
+        // Toast message Invalid credentials
+      }
+      else {
+        console.log('Something went wrong');
+      }
     }
   }
 
