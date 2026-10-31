@@ -116,11 +116,19 @@ export default function AuthForm({ mode = 'signup' }) {
           setSuccessMessage('Account created successfully! Redirecting to login...')
           setTimeout(() => {
             router.push('/login')
+            set
           }, 1000)
+          setPassword("")
+          setEmail("")
+          setFullName("")
+          setTimeout(() => {
+            setSuccessMessage("")
+          }, 5000);
         } else if (res.status === 409) {
           setErrorMessage(data?.error || 'User with this email already exists.')
         } else {
           setErrorMessage(data?.error || 'Registration failed. Please check your details.')
+
         }
       } else {
         const res = await fetch(`${backendUrl}/auth/login`, {
@@ -142,7 +150,8 @@ export default function AuthForm({ mode = 'signup' }) {
           const target = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('redirect') || '/' : '/'
           setTimeout(() => {
             router.push(target)
-            router.refresh()
+            setPassword("")
+            setEmail("")
           }, 800)
         } else if (res.status === 401 || res.status === 403) {
           setErrorMessage(data?.error || 'Invalid email or password.')
@@ -235,7 +244,7 @@ export default function AuthForm({ mode = 'signup' }) {
           } else if (data.type === 'GOOGLE_AUTH_ERROR') {
             handleAuthError(data.message)
           }
-        } catch {}
+        } catch { }
       }
     }
     window.addEventListener('storage', handleStorage)
@@ -263,7 +272,7 @@ export default function AuthForm({ mode = 'signup' }) {
       if (channel) {
         try {
           channel.close()
-        } catch {}
+        } catch { }
       }
       clearInterval(checkClosedInterval)
       setGoogleLoading(false)

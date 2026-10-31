@@ -14,7 +14,7 @@ export default function AuthHeader({ mode = 'signup' }) {
           className="flex items-center gap-2.5 bg-transparent border-none cursor-pointer p-0 text-left no-underline group"
         >
           <Image src="/logo.jpg" alt='ScreenCare' width={60} height = {60}/>
-          <span className="text-lg font-bold text-gray-900 tracking-tight group-hover:text-blue-600 transition-colors">
+          <span className="text-lg font-bold text-gra-900 tracking-tight group-hover:text-blue-600 transition-colors">
             ScreenCare
           </span>
         </Link>
