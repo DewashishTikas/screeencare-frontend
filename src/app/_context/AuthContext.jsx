@@ -52,19 +52,7 @@ export function AuthProvider({ children }) {
       })
     } catch (e) {
       console.error('Logout error:', e)
-    } finally {
-      setUser(null)
-      // Broadcast logout to all tabs
-      try {
-        if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
-          const bc = new BroadcastChannel('screencare_auth')
-          bc.postMessage({ type: 'AUTH_LOGOUT' })
-          bc.close()
-        }
-      } catch {}
-      router.push('/')
-      router.refresh()
-    }
+    } 
   }, [router])
 
   useEffect(() => {
