@@ -22,9 +22,13 @@ export default function AuthForm({ mode = 'signup' }) {
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const popupRef = useRef(null)
-
+  useEffect(() => {
+    setErrorMessage('')
+    setSuccessMessage('')
+  }, [])
   // Initialize URL search params and Google Identity Services if available
   useEffect(() => {
+
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search)
       const errorParam = params.get('error')
