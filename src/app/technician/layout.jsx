@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Technician Portal | ScreenCare',
+  title: 'Technician Portal | Apexguard',
   description: 'Technician assigned jobs and installation checklist portal',
 }
 

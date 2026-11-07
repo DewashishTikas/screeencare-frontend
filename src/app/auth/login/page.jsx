@@ -22,7 +22,7 @@ function GoogleAuthCallbackContent() {
       // 2. BroadcastChannel (works even if window.opener is disconnected by COOP)
       try {
         if ('BroadcastChannel' in window) {
-          const channel = new BroadcastChannel('screencare_auth')
+          const channel = new BroadcastChannel('Apexguard_auth')
           channel.postMessage(data)
           channel.close()
         }
@@ -31,7 +31,7 @@ function GoogleAuthCallbackContent() {
       // 3. LocalStorage event as fallback
       try {
         localStorage.setItem(
-          'screencare_auth_event',
+          'Apexguard_auth_event',
           JSON.stringify({ ...data, timestamp: Date.now() })
         )
       } catch {}
@@ -83,13 +83,13 @@ function GoogleAuthCallbackContent() {
               }
               if ('BroadcastChannel' in window) {
                 try {
-                  var bc = new BroadcastChannel('screencare_auth');
+                  var bc = new BroadcastChannel('Apexguard_auth');
                   bc.postMessage(payload);
                   bc.close();
                 } catch (e) {}
               }
               try {
-                localStorage.setItem('screencare_auth_event', JSON.stringify({ type: payload.type, timestamp: Date.now() }));
+                localStorage.setItem('Apexguard_auth_event', JSON.stringify({ type: payload.type, timestamp: Date.now() }));
               } catch (e) {}
               window.close();
             } catch (err) {}

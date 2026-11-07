@@ -76,7 +76,7 @@ export default function AdminSidebar() {
           <path d="M8 14.5L11.5 18L20 9.5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         <div>
-          <span className="text-[15px] font-bold text-gray-900 tracking-tight">ScreenCare</span>
+          <span className="text-[15px] font-bold text-gray-900 tracking-tight">Apexguard</span>
           <span className="block text-[11px] text-gray-400 font-medium -mt-0.5">Admin</span>
         </div>
       </Link>

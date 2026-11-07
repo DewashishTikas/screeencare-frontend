@@ -2,7 +2,7 @@
 export default function AuthFooter() {
   return (
     <footer className="py-6 text-center text-xs text-gray-400">
-      Secure account access for your ScreenCare bookings.
+      Secure account access for your Apexguard bookings.
     </footer>
   )
 }

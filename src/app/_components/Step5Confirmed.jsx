@@ -157,7 +157,7 @@ export default function Step5Confirmed({ bookingDetails = {}, onReturnHome }) {
       </div>
 
       <p className="text-xs text-gray-400 text-center mt-6">
-        © 2026 ScreenCare Doorstep Services. All rights reserved.
+        © 2026 Apexguard Doorstep Services. All rights reserved.
       </p>
     </motion.div>
   )

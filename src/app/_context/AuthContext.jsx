@@ -62,7 +62,7 @@ export function AuthProvider({ children }) {
     let channel = null
     try {
       if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
-        channel = new BroadcastChannel('screencare_auth')
+        channel = new BroadcastChannel('Apexguard_auth')
         channel.onmessage = (event) => {
           if (event.data?.type === 'GOOGLE_AUTH_SUCCESS' || event.data?.type === 'AUTH_SUCCESS') {
             checkAuth()
@@ -74,7 +74,7 @@ export function AuthProvider({ children }) {
     } catch {}
 
     const handleStorage = (event) => {
-      if (event.key === 'screencare_auth_event') {
+      if (event.key === 'Apexguard_auth_event') {
         checkAuth()
       }
     }

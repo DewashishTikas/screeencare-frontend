@@ -188,7 +188,7 @@ export default function AuthForm({ mode = 'signup' }) {
     // Open backend Google OAuth flow endpoint in popup
     const popup = window.open(
       `${backendUrl}/auth/google`,
-      'ScreenCareGoogleAuth',
+      'ApexguardGoogleAuth',
       `width=${width},height=${height},left=${left},top=${top},status=no,menubar=no,toolbar=no`
     )
     popupRef.current = popup
@@ -225,7 +225,7 @@ export default function AuthForm({ mode = 'signup' }) {
     let channel = null
     try {
       if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
-        channel = new BroadcastChannel('screencare_auth')
+        channel = new BroadcastChannel('Apexguard_auth')
         channel.onmessage = (event) => {
           if (event.data?.type === 'GOOGLE_AUTH_SUCCESS') {
             handleAuthSuccess()
@@ -240,7 +240,7 @@ export default function AuthForm({ mode = 'signup' }) {
 
     // 2. Storage event listener (fallback cross-window listener on same origin)
     const handleStorage = (event) => {
-      if (event.key === 'screencare_auth_event' && event.newValue) {
+      if (event.key === 'Apexguard_auth_event' && event.newValue) {
         try {
           const data = JSON.parse(event.newValue)
           if (data.type === 'GOOGLE_AUTH_SUCCESS') {
@@ -286,7 +286,7 @@ export default function AuthForm({ mode = 'signup' }) {
   return (
     <div className="p-8 md:p-12 flex flex-col justify-center bg-white" suppressHydrationWarning>
       <span className="block text-xs font-bold tracking-wider text-[#2563EB] uppercase mb-1.5">
-        WELCOME TO SCREENCARE
+        WELCOME TO Apexguard
       </span>
 
       <div>

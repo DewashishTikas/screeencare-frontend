@@ -33,7 +33,7 @@ export default function AboutPage() {
 
           <p className="text-base sm:text-lg text-gray-600 max-w-[720px] mx-auto leading-relaxed mb-10">
             No more waiting in phone repair lines. No more frustrating dust bubbles from DIY kits.
-            ScreenCare dispatches verified, certified technicians equipped with mobile dust-free kits
+            Apexguard dispatches verified, certified technicians equipped with mobile dust-free kits
             straight to your home, office, or coffee shop in 60 minutes or less.
           </p>
 
@@ -117,7 +117,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 3. Why Choose ScreenCare ── */}
+      {/* ── 3. Why Choose Apexguard ── */}
       <section className="bg-white py-20 px-6 border-y border-gray-200/80">
         <div className="max-w-[1140px] mx-auto">
           <div className="text-center mb-14">

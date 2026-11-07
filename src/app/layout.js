@@ -18,7 +18,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata = {
-  title: "ScreenCare - Doorstep Screen Protector Installation",
+  title: "Apexguard - Doorstep Screen Protector Installation",
   description: "Choose a compatible protector, pick a convenient time, and get professional installation at your doorstep within 1 hour.",
 };
 

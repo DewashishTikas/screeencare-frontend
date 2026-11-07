@@ -13,9 +13,9 @@ export default function AuthHeader({ mode = 'signup' }) {
           href="/"
           className="flex items-center gap-2.5 bg-transparent border-none cursor-pointer p-0 text-left no-underline group"
         >
-          <Image src="/logo.jpg" alt='ScreenCare' width={60} height = {60}/>
+          <Image src="/logo.webp" alt='Apexguard' width={60} height = {60}/>
           <span className="text-lg font-bold text-gra-900 tracking-tight group-hover:text-blue-600 transition-colors">
-            ScreenCare
+            Apexguard
           </span>
         </Link>
 

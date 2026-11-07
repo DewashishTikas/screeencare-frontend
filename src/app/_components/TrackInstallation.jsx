@@ -482,7 +482,7 @@ function TrackInstallationContent({ bookingDetails = {} }) {
 
         {/* ── Footer ── */}
         <footer className="text-center text-xs text-gray-400 pt-4">
-          © 2026 ScreenCare Doorstep Services. All rights reserved.
+          © 2026 Apexguard Doorstep Services. All rights reserved.
         </footer>
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function Footer() {
     >
       <div className="max-w-[1200px] mx-auto flex items-center justify-between max-md:flex-col max-md:gap-6 max-md:text-center">
         <div className="flex flex-col gap-1">
-          <strong className="text-base font-bold text-gray-900">ScreenCare</strong>
+          <strong className="text-base font-bold text-gray-900">Apexguard</strong>
           <span className="text-[13px] text-gray-400">Doorstep screen-protector installation.</span>
         </div>
         <nav className="flex gap-7 max-md:flex-wrap max-md:justify-center max-md:gap-4">

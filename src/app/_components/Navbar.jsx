@@ -64,13 +64,13 @@ export default function Navbar() {
           className="flex items-center gap-2.5 bg-transparent border-none cursor-pointer p-0 text-left no-underline"
         >
           <Image
-            src="/logo.jpg"
-            alt="ScreenCare"
+            src="/logo.webp"
+            alt="Apexguard"
             width={60}
             height={60}
             className="shrink-0"
           />
-          <span className="text-lg font-bold text-gray-900 tracking-tight">ScreenCare</span>
+          <span className="text-lg font-bold text-gray-900 tracking-tight">Apexguard</span>
         </Link>
 
         {/* Nav Links */}
@@ -161,7 +161,7 @@ export default function Navbar() {
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="text-sm font-bold text-gray-900 truncate m-0 leading-tight">
-                          {user.name || 'ScreenCare User'}
+                          {user.name || 'Apexguard User'}
                         </p>
                         <p className="text-xs text-gray-500 truncate m-0 mt-0.5">
                           {user.email}

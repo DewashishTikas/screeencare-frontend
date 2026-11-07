@@ -47,7 +47,7 @@ export default function BookingProgress({ currentStep, onStepClick, onBack, onHo
 
         <div className="font-semibold text-gray-900 tracking-tight flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#4361EE] animate-pulse"></span>
-          <span>ScreenCare Doorstep Booking</span>
+          <span>Apexguard Doorstep Booking</span>
         </div>
 
         <div className="text-gray-500 font-medium text-xs md:text-sm">

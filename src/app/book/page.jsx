@@ -1,7 +1,7 @@
 import BookingFlow from '../_components/BookingFlow'
 
 export const metadata = {
-  title: 'Book Installation | ScreenCare',
+  title: 'Book Installation | Apexguard',
   description: 'Schedule a doorstep screen protector installation for your phone.',
 }
 

@@ -1,8 +1,8 @@
 import AdminSidebar from './_components/AdminSidebar'
 
 export const metadata = {
-  title: 'ScreenCare Admin',
-  description: 'ScreenCare operations dashboard',
+  title: 'Apexguard Admin',
+  description: 'Apexguard operations dashboard',
 }
 
 export default function AdminLayout({ children }) {
