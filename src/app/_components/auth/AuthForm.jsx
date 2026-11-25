@@ -19,27 +19,27 @@ export default function AuthForm({ mode = 'signup' }) {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [googleLoading, setGoogleLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
-  const popupRef = useRef(null)
-  useEffect(() => {
-    setErrorMessage('')
-    setSuccessMessage('')
-  }, [])
-  // Initialize URL search params and Google Identity Services if available
-  useEffect(() => {
-
+  const [errorMessage, setErrorMessage] = useState(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search)
       const errorParam = params.get('error')
       if (errorParam === 'passfail') {
-        setErrorMessage('This account is registered with a password. Please sign in with your email and password.')
+        return 'This account is registered with a password. Please sign in with your email and password.'
       } else if (errorParam === 'fail') {
-        setErrorMessage('Google authentication was cancelled or failed.')
+        return 'Google authentication was cancelled or failed.'
+      }
+      const messageParam = params.get('message')
+      if (messageParam) {
+        return messageParam
       }
     }
+    return ''
+  })
+  const [successMessage, setSuccessMessage] = useState('')
+  const popupRef = useRef(null)
 
-    // Optional: Load Google Identity Services client script for additional GSI support
+  // Initialize Google Identity Services if client ID available
+  useEffect(() => {
     const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
     if (!clientId) return
 
@@ -120,7 +120,8 @@ export default function AuthForm({ mode = 'signup' }) {
           setSuccessMessage('Account created successfully! Redirecting to login...')
           setTimeout(() => {
             router.push('/login')
-            set
+            setLoading(false)
+
           }, 1000)
           setPassword("")
           setEmail("")

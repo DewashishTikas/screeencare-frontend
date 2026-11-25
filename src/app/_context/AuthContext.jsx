@@ -53,10 +53,35 @@ export function AuthProvider({ children }) {
     } catch (e) {
       console.error('Logout error:', e)
     } 
-  }, [router])
+  }, [])
 
   useEffect(() => {
-    checkAuth()
+    let isMounted = true
+    const initAuth = async () => {
+      try {
+        const backendUrl = process.env.NEXT_PUBLIC_BACKENDURL || 'http://localhost:4000'
+        const res = await fetch(`${backendUrl}/auth`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+
+        if (res.ok) {
+          const data = await res.json()
+          if (isMounted) setUser(data)
+        } else {
+          if (isMounted) setUser(null)
+        }
+      } catch (error) {
+        console.warn('Backend authentication check unavailable:', error)
+        if (isMounted) setUser(null)
+      } finally {
+        if (isMounted) setLoading(false)
+      }
+    }
+    initAuth()
 
     // Listen for auth events from other windows / popups
     let channel = null

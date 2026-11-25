@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Step5Confirmed({ bookingDetails = {}, onReturnHome }) {
   const [copied, setCopied] = useState(false)
@@ -77,12 +78,28 @@ export default function Step5Confirmed({ bookingDetails = {}, onReturnHome }) {
           </div>
 
           <div>
-            <div className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider mb-1">
+            <div className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider mb-1.5">
               Device & Protector
             </div>
-            <div className="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-2">
-              <span className="text-base">📱</span>
-              <span>{phone} · {protector}</span>
+            <div className="flex items-center gap-3 bg-white p-2.5 rounded-xl border border-slate-200/60">
+              {bookingDetails.selectedProtector?.image ? (
+                <div className="w-12 h-12 rounded-lg bg-gray-50 border border-gray-150 p-1 shrink-0 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={bookingDetails.selectedProtector.image}
+                    alt={protector}
+                    width={44}
+                    height={44}
+                    className="w-full h-full object-contain"
+                    unoptimized
+                  />
+                </div>
+              ) : (
+                <span className="text-xl">📱</span>
+              )}
+              <div className="min-w-0 flex-1">
+                <div className="text-xs sm:text-sm font-bold text-gray-900 truncate">{protector}</div>
+                <div className="text-xs text-gray-500 font-medium truncate">For {phone}</div>
+              </div>
             </div>
           </div>
 
@@ -102,9 +119,27 @@ export default function Step5Confirmed({ bookingDetails = {}, onReturnHome }) {
             </div>
             <div className="text-xs sm:text-sm font-medium text-gray-700 flex items-start gap-2 leading-snug">
               <span className="shrink-0 text-base mt-0.5">📍</span>
-              <span>{address}</span>
+              <div>
+                {bookingDetails.user?.name && (
+                  <div className="font-bold text-gray-900 mb-0.5">
+                    {bookingDetails.user.name} ({bookingDetails.user.phone || ''})
+                  </div>
+                )}
+                <span>{address}</span>
+              </div>
             </div>
           </div>
+
+          {bookingDetails.instructions && (
+            <div>
+              <div className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider mb-1">
+                Delivery Instructions
+              </div>
+              <div className="text-xs sm:text-sm text-gray-600 bg-white p-2.5 rounded-xl border border-slate-200/60">
+                &ldquo;{bookingDetails.instructions}&rdquo;
+              </div>
+            </div>
+          )}
 
           <div className="border-t border-slate-200/60 pt-3 flex items-center justify-between">
             <span className="text-xs text-gray-500 font-medium">Total to Pay (Doorstep UPI/Cash)</span>

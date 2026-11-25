@@ -34,12 +34,14 @@ export default function Navbar() {
     }
   }
 
-  const handleBookClick = (e) => {
-    e.preventDefault()
-    if (!user) {
-      router.push('/login?redirect=/book?step=1')
-    } else {
-      router.push('/book?step=1')
+  const handleBookInstallationClick = (e) => {
+    if (isHomePage) {
+      e.preventDefault()
+      const el = document.getElementById('book-installation')
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+        window.history.pushState(null, '', '#book-installation')
+      }
     }
   }
 
@@ -68,7 +70,7 @@ export default function Navbar() {
             alt="Apexguard"
             width={60}
             height={60}
-            className="shrink-0"
+            className="shrink-0 h-auto"
           />
           <span className="text-lg font-bold text-gray-900 tracking-tight">Apexguard</span>
         </Link>
@@ -90,7 +92,6 @@ export default function Navbar() {
               className="no-underline text-gray-500 text-[15px] font-[450] hover:text-gray-900 transition-colors flex items-center gap-1.5"
             >
               <span>About us</span>
-
             </Link>
           </li>
         </ul>
@@ -99,20 +100,12 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           {!loading && user ? (
             <>
-              {/* Order Track Button */}
-              <Link
-                href="/track"
-                className="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-gray-700 bg-gray-100/80 hover:bg-gray-200/70 rounded-xl transition-colors no-underline border border-gray-200/80"
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500">
-                  <path d="M10 17h4V5H2v12h3m10 0h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-.6-1.4L18 7h-3v10m-8 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
-                </svg>
-                <span>Track Order</span>
-              </Link>
+
 
               {/* Book Installation CTA */}
               <Link
-                href="/book?step=1"
+                href="/#book-installation"
+                onClick={handleBookInstallationClick}
                 className="inline-flex items-center px-4 sm:px-5 py-2.5 bg-[#4361EE] text-white rounded-3xl text-sm font-medium hover:bg-[#3451de] hover:-translate-y-0.5 transition-all shadow-[0_2px_8px_rgba(67,97,238,0.25)] border-none cursor-pointer no-underline"
               >
                 Book installation
@@ -248,13 +241,13 @@ export default function Navbar() {
                 Sign in
               </Link>
 
-              <button
-                type="button"
-                onClick={handleBookClick}
-                className="inline-flex items-center px-5 py-2.5 bg-[#4361EE] text-white rounded-3xl text-sm font-medium hover:bg-[#3451de] hover:-translate-y-0.5 transition-all shadow-[0_2px_8px_rgba(67,97,238,0.25)] border-none cursor-pointer"
+              <Link
+                href="/#book-installation"
+                onClick={handleBookInstallationClick}
+                className="inline-flex items-center px-5 py-2.5 bg-[#4361EE] text-white rounded-3xl text-sm font-medium hover:bg-[#3451de] hover:-translate-y-0.5 transition-all shadow-[0_2px_8px_rgba(67,97,238,0.25)] border-none cursor-pointer no-underline"
               >
                 Book installation
-              </button>
+              </Link>
             </>
           )}
         </div>
