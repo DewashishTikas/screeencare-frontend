@@ -59,20 +59,20 @@ export default function Navbar() {
 
   return (
     <nav className="w-full bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-[0_1px_3px_rgba(0,0,0,0.03)] font-sans">
-      <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-[1200px] mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2">
         {/* Brand */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 bg-transparent border-none cursor-pointer p-0 text-left no-underline"
+          className="flex items-center gap-1.5 sm:gap-2.5 bg-transparent border-none cursor-pointer p-0 text-left no-underline shrink-0"
         >
           <Image
             src="/logo.webp"
             alt="Apexguard"
             width={60}
             height={60}
-            className="shrink-0 h-auto"
+            className="shrink-0 w-9 sm:w-[60px] h-auto"
           />
-          <span className="text-lg font-bold text-gray-900 tracking-tight">Apexguard</span>
+          <span className="text-sm sm:text-lg font-bold text-gray-900 tracking-tight whitespace-nowrap">Apexguard</span>
         </Link>
 
         {/* Nav Links */}
@@ -97,7 +97,7 @@ export default function Navbar() {
         </ul>
 
         {/* Actions (Sign in or Profile & Order Track) */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           {!loading && user ? (
             <>
 
@@ -106,7 +106,7 @@ export default function Navbar() {
               <Link
                 href="/#book-installation"
                 onClick={handleBookInstallationClick}
-                className="inline-flex items-center px-4 sm:px-5 py-2.5 bg-[#4361EE] text-white rounded-3xl text-sm font-medium hover:bg-[#3451de] hover:-translate-y-0.5 transition-all shadow-[0_2px_8px_rgba(67,97,238,0.25)] border-none cursor-pointer no-underline"
+                className="inline-flex items-center px-3 sm:px-5 py-1.5 sm:py-2.5 bg-[#4361EE] text-white rounded-3xl text-xs sm:text-sm font-medium hover:bg-[#3451de] hover:-translate-y-0.5 transition-all shadow-[0_2px_8px_rgba(67,97,238,0.25)] border-none cursor-pointer no-underline whitespace-nowrap"
               >
                 Book installation
               </Link>
@@ -116,7 +116,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-[#4361EE]/30 hover:border-[#4361EE] transition-all bg-blue-50 text-[#4361EE] font-bold text-sm overflow-hidden cursor-pointer shadow-xs"
+                  className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-[#4361EE]/30 hover:border-[#4361EE] transition-all bg-blue-50 text-[#4361EE] font-bold text-xs sm:text-sm overflow-hidden cursor-pointer shadow-xs"
                   aria-label="User account menu"
                 >
                   {user.picture ? (
@@ -236,7 +236,7 @@ export default function Navbar() {
               {/* Not logged in: show Sign in & Book Installation */}
               <Link
                 href="/login"
-                className="text-sm font-semibold text-gray-600 hover:text-gray-950 transition-colors bg-transparent border-none cursor-pointer no-underline"
+                className="text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-950 transition-colors bg-transparent border-none cursor-pointer no-underline whitespace-nowrap"
               >
                 Sign in
               </Link>
@@ -244,7 +244,7 @@ export default function Navbar() {
               <Link
                 href="/#book-installation"
                 onClick={handleBookInstallationClick}
-                className="inline-flex items-center px-5 py-2.5 bg-[#4361EE] text-white rounded-3xl text-sm font-medium hover:bg-[#3451de] hover:-translate-y-0.5 transition-all shadow-[0_2px_8px_rgba(67,97,238,0.25)] border-none cursor-pointer no-underline"
+                className="inline-flex items-center px-3 sm:px-5 py-1.5 sm:py-2.5 bg-[#4361EE] text-white rounded-3xl text-xs sm:text-sm font-medium hover:bg-[#3451de] hover:-translate-y-0.5 transition-all shadow-[0_2px_8px_rgba(67,97,238,0.25)] border-none cursor-pointer no-underline whitespace-nowrap"
               >
                 Book installation
               </Link>
