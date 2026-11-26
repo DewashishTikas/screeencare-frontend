@@ -336,7 +336,7 @@ function TrackInstallationContent({ bookingDetails = {} }) {
             {/* ── Card 3: Rate Your Installation ── */}
             <div className="bg-white rounded-2xl border border-gray-200/90 p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
               <div className="flex items-center gap-2 mb-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="yellow" stroke="yellow" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                 </svg>
                 <h3 className="text-xs sm:text-sm font-bold text-gray-900 m-0">Rate Your Installation</h3>
@@ -392,93 +392,6 @@ function TrackInstallationContent({ bookingDetails = {} }) {
           </div>
         </div>
 
-        {/* ════ Bottom Full-Width Card: Create Support Ticket ════ */}
-        <div id="support-ticket-card" className="bg-white rounded-2xl border border-gray-200/90 p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] mb-12">
-          <div className="flex items-start gap-3 mb-5">
-            <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#2563EB] flex items-center justify-center shrink-0 mt-0.5">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-            </div>
-            <div>
-              <h2 className="text-base font-bold text-gray-900 m-0">Create Support Ticket</h2>
-              <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-                Have an issue with your scheduling, technician arrival, or payment? Let us know, and our support team will resolve it immediately.
-              </p>
-            </div>
-          </div>
-
-          {ticketSubmitted ? (
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
-              <div className="text-sm font-bold text-blue-900 mb-1">Ticket Submitted Successfully!</div>
-              <p className="text-xs text-blue-700 m-0">
-                Ticket reference: <span className="font-mono font-bold">{ticketId}</span>. Our doorstep support team is reviewing it and will reach out via call or SMS.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleTicketSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                    Booking ID
-                  </label>
-                  <input
-                    type="text"
-                    disabled
-                    value={bookingId}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-xs font-mono font-bold text-gray-600 cursor-not-allowed"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                    Issue Category
-                  </label>
-                  <select
-                    value={issueCategory}
-                    onChange={(e) => setIssueCategory(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-xs font-medium text-gray-800 focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]/20 outline-none"
-                  >
-                    <option value="Technician Delay">Technician Delay</option>
-                    <option value="Wrong Protector Model">Wrong Protector Model</option>
-                    <option value="Reschedule Request">Reschedule Request</option>
-                    <option value="Address Update">Address Update</option>
-                    <option value="Payment or Pricing Query">Payment or Pricing Query</option>
-                    <option value="Cancellation Request">Cancellation Request</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                  Description of the issue
-                </label>
-                <textarea
-                  rows={4}
-                  required
-                  value={issueDescription}
-                  onChange={(e) => setIssueDescription(e.target.value)}
-                  placeholder="Please describe your issue in detail so we can help you faster..."
-                  className="w-full p-3.5 text-xs rounded-xl border border-gray-200 focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]/20 outline-none resize-none placeholder:text-gray-400"
-                />
-              </div>
-
-              <div className="flex justify-end pt-1">
-                <button
-                  type="submit"
-                  className="px-5 py-2.5 bg-[#2563EB] hover:bg-[#1d4ed8] text-white text-xs font-semibold rounded-xl inline-flex items-center gap-2 transition-colors cursor-pointer border-none shadow-xs"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13" />
-                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                  </svg>
-                  <span>Submit Ticket</span>
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
 
         {/* ── Footer ── */}
         <footer className="text-center text-xs text-gray-400 pt-4">

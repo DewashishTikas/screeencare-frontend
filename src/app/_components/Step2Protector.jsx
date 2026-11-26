@@ -697,11 +697,7 @@ export default function Step2Protector({
                   <div className="text-sm font-bold text-gray-900 leading-snug line-clamp-2">
                     {selectedProtector?.name || 'Please select a protector'}
                   </div>
-                  {selectedProtector?.sku && (
-                    <div className="text-[11px] font-mono font-medium text-gray-500 mt-0.5">
-                      {selectedProtector.sku}
-                    </div>
-                  )}
+
                   <div className="text-base font-extrabold text-[#4361EE] mt-1">
                     ₹{selectedProtector?.totalPrice || selectedProtector?.price || 449}
                   </div>

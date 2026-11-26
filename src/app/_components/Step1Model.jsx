@@ -501,59 +501,6 @@ export default function Step1Model({
         </div>
       )}
 
-      {/* ── Quick Selection Strip (Top Accessible Action) ── */}
-      {selectedPhone && !loading && phones.length > 0 && (
-        <div className="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-4 mb-5 flex items-center justify-between gap-4 shadow-xs animate-fadeIn">
-          <div className="flex items-center gap-3 min-w-0">
-            {selectedPhone.image ? (
-              <div className="w-10 h-10 rounded-xl bg-white border border-blue-200 overflow-hidden shrink-0 flex items-center justify-center">
-                <Image
-                  src={selectedPhone.image}
-                  alt={selectedPhone.model}
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-cover"
-                  unoptimized
-                />
-              </div>
-            ) : (
-              <div className="w-10 h-10 rounded-xl bg-white text-[#4361EE] border border-blue-200 flex items-center justify-center shrink-0 font-bold text-sm">
-                📱
-              </div>
-            )}
-            <div className="min-w-0">
-              <span className="text-[11px] font-extrabold text-[#4361EE] uppercase tracking-wider block">
-                Selected Device
-              </span>
-              <span className="text-sm sm:text-base font-extrabold text-gray-900 truncate block">
-                {selectedPhone.brand} {selectedPhone.model}
-              </span>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            onClick={handleContinue}
-            disabled={isSubmitting}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#4361EE] hover:bg-[#3451de] text-white rounded-xl font-bold text-xs sm:text-sm shadow-xs hover:-translate-y-0.5 transition-all cursor-pointer border-none shrink-0"
-          >
-            {isSubmitting ? (
-              <>
-                <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                <span>Loading...</span>
-              </>
-            ) : (
-              <>
-                <span>Continue</span>
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </>
-            )}
-          </button>
-        </div>
-      )}
-
       {/* ── Phone Cards Grid ── */}
       {!loading && phones.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
@@ -611,34 +558,6 @@ export default function Step1Model({
           })}
         </div>
       )}
-
-      {/* ── Bottom Action ── */}
-      <div className="flex justify-end">
-        <button
-          type="button"
-          onClick={handleContinue}
-          disabled={!selectedPhone || isSubmitting}
-          className={`inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-sm transition-all border-none ${
-            selectedPhone && !isSubmitting
-              ? 'bg-[#4361EE] text-white hover:bg-[#3451de] hover:translate-x-0.5 shadow-md cursor-pointer'
-              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-          }`}
-        >
-          {isSubmitting ? (
-            <>
-              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-              <span>Loading products...</span>
-            </>
-          ) : (
-            <>
-              <span>Continue</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </>
-          )}
-        </button>
-      </div>
 
       {/* ── Floating Sticky Bottom Bar for Instant Continue Access Across Long Catalogs ── */}
       {selectedPhone && (
