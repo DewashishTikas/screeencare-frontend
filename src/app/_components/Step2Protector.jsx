@@ -369,7 +369,7 @@ export default function Step2Protector({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -16 }}
       transition={{ duration: 0.4 }}
-      className="max-w-[1050px] mx-auto py-10 px-6 font-sans text-gray-800"
+      className="max-w-[1050px] mx-auto pt-10 pb-28 px-6 font-sans text-gray-800"
     >
       {/* ── Section Header (Enlarged fonts) ── */}
       <div className="mb-7">
@@ -757,24 +757,63 @@ export default function Step2Protector({
         </div>
       </div>
 
-      {/* ── Bottom Action ── */}
-      <div className="flex justify-end">
-        <button
-          type="button"
-          onClick={handleContinue}
-          disabled={!selectedProtector}
-          className={`inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl font-bold text-base transition-all border-none ${
-            selectedProtector
-              ? 'bg-[#4361EE] text-white hover:bg-[#3451de] hover:translate-x-0.5 shadow-md cursor-pointer'
-              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-          }`}
-        >
-          <span>Continue</span>
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      </div>
+      {/* ── Floating Sticky Bottom Bar for Instant Continue Access ── */}
+      {selectedProtector && (
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200/90 shadow-[0_-4px_24px_rgba(0,0,0,0.09)] py-3 px-4 sm:px-6">
+          <div className="max-w-[1050px] mx-auto flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              {selectedProtector.image ? (
+                <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 overflow-hidden shrink-0 flex items-center justify-center p-1 shadow-xs">
+                  <Image
+                    src={selectedProtector.image}
+                    alt={selectedProtector.name || ''}
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-contain"
+                    unoptimized
+                  />
+                </div>
+              ) : (
+                <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#4361EE] flex items-center justify-center shrink-0 text-base font-bold">
+                  🛡️
+                </div>
+              )}
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider">
+                    Selected
+                  </span>
+                </div>
+                <div className="text-sm sm:text-base font-extrabold text-gray-900 truncate">
+                  {selectedProtector.name}
+                  <span className="ml-2 text-[#4361EE]">
+                    ₹{selectedProtector.totalPrice || selectedProtector.price || 449}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleContinue}
+              disabled={!selectedProtector}
+              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 bg-[#4361EE] hover:bg-[#3451de] text-white rounded-xl font-bold text-sm sm:text-base shadow-[0_2px_12px_rgba(67,97,238,0.35)] hover:-translate-y-0.5 transition-all cursor-pointer border-none shrink-0"
+            >
+              <span>Continue</span>
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M3 8H13M13 8L9 4M13 8L9 12"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
       {/* ── Image Preview & Interactive Zoom Lightbox with Mini Animation ── */}
       <AnimatePresence>
         {previewProduct && (
